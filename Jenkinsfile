@@ -1,3 +1,5 @@
+@Library('java_demo_pipeline@main') _
+
 pipeline {
   agent { label 'slave2' }	
 	environment {
@@ -8,19 +10,19 @@ pipeline {
     stages {
         stage('Checkout') {             
             steps {
-               sh "rm -rf Service-Parcel"
-               sh "git clone https://github.com/sarath8008/Service-Parcel.git"
-	       sh "cd Service-Parcel"
-				 
+             //  sh "rm -rf rcbclinic"
+              // sh "git clone https://github.com/basavarajmallad/rcbclinic.git"
+		// sh "cd rcbclinic"
+		checkoutcode()		 
             }
         }
 	  
         stage('setupjava17') {             
             steps {
-		   sh "whoami"
-		   echo " installing java 17"
-                   sh "sudo apt update"
-     		   sh "sudo apt install -y openjdk-17-jdk"
+		   //sh "whoami"
+		      //echo " installing java 17"
+               //sh "sudo apt update"
+     		//sh "sudo apt install -y openjdk-17-jdk"
 		setupjava('openjdk-17-jdk')
 		
 		 
@@ -29,14 +31,14 @@ pipeline {
 
 	 stage('setupmaven') {             
             steps {  
-		    echo " installing maveen"
-     		sh "sudo apt install -y maven"
+		 //   echo " installing maveen"
+     		//sh "sudo apt install -y maven"
 		    setupjava('maven')
             }
         }
            stage('build') {             
             steps {               
-                sh "mvn clean package"
+               // sh "mvn clean package"
 		    buildproject()
                   }
         }
@@ -49,7 +51,7 @@ pipeline {
 	 	    	     stage('Run Application') {
             steps {
                 echo 'Running Spring Boot application...'
-                    sh 'mvn spring-boot:run '
+               // sh 'mvn spring-boot:run '
 		    sh 'mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=8084"'
 
             }
