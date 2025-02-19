@@ -11,7 +11,7 @@ pipeline {
                sh "rm -rf Service-Parcel"
                sh "git clone https://github.com/sarath8008/Service-Parcel.git"
 	       sh "cd Service-Parcel"
-		checkoutcode()		 
+				 
             }
         }
 	  
