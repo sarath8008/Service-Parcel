@@ -11,9 +11,9 @@ pipeline {
     stages {
         stage('Checkout') {             
             steps {
-             //  sh "rm -rf rcbclinic"
-              // sh "git clone https://github.com/basavarajmallad/rcbclinic.git"
-		// sh "cd rcbclinic"
+             //  sh "rm -rf Service_Parcel"
+              // sh "git clone https://github.com/sarath8008/Service-Parcel.git"
+		// sh "cd Service-Parcel"
 		checkoutcode()		 
             }
         }
